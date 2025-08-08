@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs "node18"
+        nodejs "node18" // The NodeJS version you configured in Jenkins
     }
 
     stages {
@@ -20,14 +20,9 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'npm test || echo "No tests configured"'
+                sh 'npm test'
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                sh 'sudo docker build -t nodejs-demo-app .'
-            }
-        }
     }
 }
